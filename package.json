@@ -10,7 +10,8 @@
     "format:check": "prettier --check \"src/**/*.ts\"",
     "test": "node --import tsx tests/setup/setup-test-db.ts && vitest run",
     "test:coverage": "node --import tsx tests/setup/setup-test-db.ts && vitest run --coverage",
-    "package": "npm run build && powershell -Command \"Compress-Archive -Path build, prisma, scripts, package.json, package-lock.json, README.md, LICENSE, .env.example -DestinationPath release.zip -Force\""
+    "package": "npm run build && powershell -Command \"Compress-Archive -Path build, prisma, scripts, package.json, package-lock.json, README.md, LICENSE, .env.example -DestinationPath release.zip -Force\"",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "better-sqlite3": "^13.0.3",
     "fast-glob": "^3.3.3",
     "isbinaryfile": "^6.0.0",
+    "prisma": "^7.9.1",
     "simple-git": "^3.36.0",
     "zod": "^4.4.3"
   },
@@ -33,7 +35,6 @@
     "esbuild": "^0.28.2",
     "javascript-obfuscator": "^5.5.0",
     "prettier": "^3.0.0",
-    "prisma": "^7.9.1",
     "tsx": "^4.23.11",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10"
