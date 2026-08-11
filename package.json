@@ -1,15 +1,16 @@
 {
   "name": "mcp",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "bin": "./build/server.js",
   "scripts": {
-    "build": "esbuild src/server.ts --bundle --platform=node --format=esm --minify --outfile=build/codewithsoftority.js --external:better-sqlite3 --external:@prisma/* --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\"",
+    "build": "esbuild src/server.ts --bundle --platform=node --format=esm --minify --outfile=build/server.js --external:better-sqlite3 --external:@prisma/* --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\"",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "test": "node --import tsx tests/setup/setup-test-db.ts && vitest run",
-    "test:coverage": "node --import tsx tests/setup/setup-test-db.ts && vitest run --coverage"
+    "test:coverage": "node --import tsx tests/setup/setup-test-db.ts && vitest run --coverage",
+    "package": "npm run build && powershell -Command \"Compress-Archive -Path build, prisma, scripts, package.json, package-lock.json, README.md, LICENSE, .env.example -DestinationPath release.zip -Force\""
   },
   "keywords": [],
   "author": "",

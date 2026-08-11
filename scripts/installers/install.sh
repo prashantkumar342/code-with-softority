@@ -7,7 +7,7 @@ INSTALL_DIR="$HOME/.code-with-softority"
 BIN_DIR="$INSTALL_DIR/bin"
 EXECUTABLE_NAME="code-with-softority"
 # TODO: Replace with your actual GitHub repository release URL
-DOWNLOAD_URL="https://github.com/Softority/mcp-server/releases/latest/download/release.zip"
+DOWNLOAD_URL="https://github.com/prashantkumar342/code-with-softority/releases/latest/download/release.zip"
 
 echo "========================================="
 echo " Installing Softority MCP Server..."

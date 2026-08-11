@@ -61,12 +61,12 @@ Users can install the latest release by running these single commands in their t
 
 **Windows (PowerShell):**
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Softority/mcp-server/main/scripts/installers/install.ps1" -OutFile "$env:TEMP\install.ps1"; & "$env:TEMP\install.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/prashantkumar342/code-with-softority/main/scripts/installers/install.ps1" -OutFile "$env:TEMP\install.ps1"; & "$env:TEMP\install.ps1"
 ```
 
 **macOS / Linux (Bash):**
 ```bash
-curl -fsSL "https://raw.githubusercontent.com/Softority/mcp-server/main/scripts/installers/install.sh" | bash
+curl -fsSL "https://raw.githubusercontent.com/prashantkumar342/code-with-softority/main/scripts/installers/install.sh" | bash
 ```
 
 *(Be sure to replace the URLs with the actual raw URLs of your install scripts once they are pushed to GitHub!)*

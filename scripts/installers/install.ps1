@@ -13,7 +13,7 @@ $EXECUTABLE_NAME = "code-with-softority"
 $INSTALL_DIR = Join-Path $env:LOCALAPPDATA ".code-with-softority"
 $BIN_DIR = Join-Path $INSTALL_DIR "bin"
 # TODO: Replace with your actual GitHub repository release URL
-$DOWNLOAD_URL = "https://github.com/Softority/mcp-server/releases/latest/download/release.zip"
+$DOWNLOAD_URL = "https://github.com/prashantkumar342/code-with-softority/releases/latest/download/release.zip"
 
 Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host " Installing Softority MCP Server..." -ForegroundColor Cyan
