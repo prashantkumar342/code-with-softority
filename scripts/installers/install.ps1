@@ -7,6 +7,10 @@ Downloads the latest release of the Softority MCP Server, sets up the directory,
 installs dependencies, and adds it to the user's PATH so it can be run from anywhere.
 #>
 
+param (
+    [switch]$KillServer
+)
+
 $ErrorActionPreference = 'Stop'
 
 $EXECUTABLE_NAME = "code-with-softority"
@@ -19,10 +23,30 @@ Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host " Installing Softority MCP Server..." -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
 
+if ($KillServer) {
+    Write-Host "-> Attempting to kill running Softority MCP Server processes..."
+    Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" | 
+        Where-Object { $_.CommandLine -match 'build[\\/]server\.js' } | 
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+    Start-Sleep -Seconds 1
+}
+
 # 1. Clean up old installation
 if (Test-Path $INSTALL_DIR) {
     Write-Host "-> Removing existing installation at $INSTALL_DIR..."
-    Remove-Item -Path $INSTALL_DIR -Recurse -Force
+    try {
+        Remove-Item -Path $INSTALL_DIR -Recurse -Force -ErrorAction Stop
+    } catch {
+        Write-Host ""
+        Write-Host "========================================================" -ForegroundColor Red
+        Write-Host " ERROR: Could not remove existing installation files." -ForegroundColor Red
+        Write-Host " The files are likely locked because the MCP Server is currently running." -ForegroundColor Red
+        Write-Host " Please close Claude Desktop, your IDE, or any other app using" -ForegroundColor Red
+        Write-Host " the Softority MCP Server, and then try installing again." -ForegroundColor Red
+        Write-Host " Alternatively, run this script with the -KillServer flag to automatically kill it." -ForegroundColor Yellow
+        Write-Host "========================================================" -ForegroundColor Red
+        exit 1
+    }
 }
 
 # 2. Create directories
