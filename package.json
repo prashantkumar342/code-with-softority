@@ -1,0 +1,40 @@
+{
+  "name": "mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "./build/server.js",
+  "scripts": {
+    "build": "esbuild src/server.ts --bundle --platform=node --format=esm --minify --outfile=build/codewithsoftority.js --external:better-sqlite3 --external:@prisma/* --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\"",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "test": "node --import tsx tests/setup/setup-test-db.ts && vitest run",
+    "test:coverage": "node --import tsx tests/setup/setup-test-db.ts && vitest run --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "better-sqlite3": "^13.0.3",
+    "fast-glob": "^3.3.3",
+    "isbinaryfile": "^6.0.0",
+    "simple-git": "^3.36.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "dotenv": "^17.4.2",
+    "esbuild": "^0.28.2",
+    "javascript-obfuscator": "^5.5.0",
+    "prettier": "^3.0.0",
+    "prisma": "^7.9.1",
+    "tsx": "^4.23.11",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
