@@ -42,6 +42,9 @@ if ! command -v npm &> /dev/null; then
 fi
 npm install --production --silent
 
+echo "-> Initializing database..."
+npx prisma db push
+
 # 5. Create executable wrapper
 echo "-> Setting up executable command '$EXECUTABLE_NAME'..."
 cat > "$BIN_DIR/$EXECUTABLE_NAME" << 'EOF'

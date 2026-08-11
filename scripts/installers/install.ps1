@@ -52,6 +52,9 @@ if (!(Get-Command npm -ErrorAction SilentlyContinue)) {
 # Run npm install
 npm install --production --silent
 
+Write-Host "-> Initializing database..."
+npx.cmd prisma db push
+
 Pop-Location
 
 # 5. Create executable wrapper
