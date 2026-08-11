@@ -10,7 +10,7 @@
     "format:check": "prettier --check \"src/**/*.ts\"",
     "test": "node --import tsx tests/setup/setup-test-db.ts && vitest run",
     "test:coverage": "node --import tsx tests/setup/setup-test-db.ts && vitest run --coverage",
-    "package": "npm run build && powershell -Command \"Compress-Archive -Path build, prisma, scripts, package.json, package-lock.json, README.md, LICENSE, .env.example -DestinationPath release.zip -Force\"",
+    "package": "npm run build && powershell -ExecutionPolicy Bypass -Command \"Compress-Archive -Path build, prisma, scripts, package.json, package-lock.json, README.md, LICENSE, .env.example -DestinationPath release.zip -Force\"",
     "postinstall": "prisma generate"
   },
   "keywords": [],

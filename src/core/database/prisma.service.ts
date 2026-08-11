@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const isProd = __dirname.includes("build") || __dirname.endsWith("build");
-const baseDir = isProd ? path.resolve(__dirname, "..") : path.resolve(__dirname, "../../../..");
+const baseDir = isProd ? path.resolve(__dirname, "..") : path.resolve(__dirname, "../../..");
 
 const dbName = process.env.NODE_ENV === "test" ? "test.db" : "dev.db";
 const dbPath = path.resolve(baseDir, dbName);
