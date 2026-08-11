@@ -1,6 +1,7 @@
 import { ProjectMetadata, RemoveProjectReturn } from "../types/index.js";
 import { ProjectRepository } from "../repositories/project.repository.js";
-import { Prisma } from "@prisma/client";
+import prismaPkg from "@prisma/client";
+const { Prisma } = prismaPkg;
 
 export class RemoveProjectService {
   private projectRepository = new ProjectRepository();

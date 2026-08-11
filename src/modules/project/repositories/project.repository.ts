@@ -1,5 +1,6 @@
 import { prisma } from "../../../core/database/prisma.service.js";
-import { Prisma } from "@prisma/client";
+import prismaPkg from "@prisma/client";
+const { Prisma } = prismaPkg;
 
 export class ProjectRepository {
   async create(data: Prisma.ProjectCreateInput) {
